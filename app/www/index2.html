@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<HTML>
+<form action="demo_form.asp" method="post">
+
+
+<div>
+	State: <select name="state">
+	<option value="CA"> California </option>
+	<option value="MA"> Massachussets </option>
+	<option value="VA"> Virginia </option>
+	<option value="NY"> New York </option>
+	<option value="CO"> Collarado </option>
+	</select>
+
+</div>
+
+<div>
+	Intuit Employee: <input type="checkbox" name="intuitEmployee">
+</div>
+
+<div>
+	Intuit Employee: <input type="checkbox" name="methodOfCommute" value="car">
+
+</div>
+
+
+<div>
+	Method of Commute: <br>
+
+	<label for="car"> Car: </label>
+	<input type="radio" name="methodOfCommute" value="car" id="car"> <br>
+
+	<label for="carPool"> Carpool: </label>
+	<input type="radio" name="methodOfCommute" value="carpool" id="carPool" required><br>
+
+</div>
+
+<label for="firstName">First Name</label>
+  <input type="textarea" name="firstName" id="firstName" value="First Name"><br>	
+
+<input type="submit" value="submit">
+
+</form>
+
+</HTML>

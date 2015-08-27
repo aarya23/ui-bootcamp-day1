@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Intuit Bootcamp</title>
+		<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+		<script data-main="js/main" src="libs/requirejs/require.js"></script>
+		<script src="libs/jquery/dist/jquery.js"> </script>
+
+</head>
+<body>
+
+	<div id="fileUploadDiv-1">
+		
+	</div>
+
+	<div id="fileUploadDiv-2">
+
+	</div>
+
+	<script type="text/javascript" >
+
+
+	
+	requirejs(["app-amd/fileupload"], function(fileupload) {
+
+		console.log("in main file");
+
+		fileupload.insertFileUpload("#fileUploadDiv-1");
+
+		fileupload.insertFileUpload("#fileUploadDiv-2");
+
+});
+
+	    </script>
+
+</body>
+</html>

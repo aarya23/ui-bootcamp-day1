@@ -1,0 +1,22 @@
+.base-col, body .container .row .menu-col, body .container .row .col-2, body .container .row .content-col, body .container .row .full-col {
+  float: left;
+  box-sizing: border-box;
+  border: 1px solid black; }
+
+body {
+  margin: 0;
+  padding: 0; }
+  body .container {
+    width: 100%;
+    box-sizing: border-box; }
+    body .container .row {
+      box-sizing: border-box;
+      clear: both; }
+      body .container .row .menu-col {
+        width: 25%; }
+      body .container .row .col-2 {
+        width: 50%; }
+      body .container .row .content-col {
+        width: 75%; }
+      body .container .row .full-col {
+        width: 100%; }

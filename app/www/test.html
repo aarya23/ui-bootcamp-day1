@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var x=0, y=0,funcs=[];
+
+		// immediately invoked function expression iife
+
+		// for(;x<5;x++) {
+
+		 	// funcs.push(return function() {
+	
+		 	// 			console.log("output " + ff);
+		 	// });
+		 
+
+		for(; x<5;x++) {
+			(function() {
+				var tt=x;
+				funcs.push(function() {
+					console.log(tt);
+				});
+			})();
+		}
+
+		for(;y<5;y++) {
+			funcs[y]();		
+		}
+
+		// this and arguments are not passed
+
+
+		function outer() {
+
+			var x = this;
+			function inner() {
+				console.log(x);
+			}
+			inner();
+		}
+
+		outer.call({id:3});
+
+
+	</script>
+
+</body>
+</html>

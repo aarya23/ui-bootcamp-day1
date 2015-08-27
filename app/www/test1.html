@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+	"use strict";
+
+
+
+	function Account(name) {
+			this.name = name;
+			this.balance = 0;
+			this.transactionList = [];
+	}
+
+	Account.prototype.getBalance  = function (){
+		return this.balance;
+	}
+
+	Account.prototype.getTransactionList = function() {
+		return this.transactionList;
+	}
+
+	Account.prototype.addTransaction = function(transaction) {
+		this.transactionList.push(transaction);
+		this.balance = this.balance + transaction.amount;
+	}
+
+	var a = new Account("MyAccount");
+
+	console.log(a.name);
+	console.log(a.getTransactionList());
+	console.log(a.getBalance());
+
+	a.addTransaction({type:'CREDIT', amount:100});
+
+	console.log(a.transactionList[0]);
+
+
+	function SavingsAccount(name) {
+		SavingsAccount.prototype._super.call(this, name);				
+
+	}
+
+
+	SavingsAccount.prototype = Object.create(Account.prototype);
+	SavingsAccount.prototype.constructor = SavingsAccount;
+	SavingsAccount.prototype._super = Account;
+
+	
+	SavingsAccount.addTransaction = function (transaction) {
+
+
+		var txnCount = 0;
+
+			if(transaction.type === 'CREDIT') {
+				_super.addTransaction(transaction);
+				return;
+			}
+				
+
+		for (var i = 0; i < transactionList.length; i++) {
+
+
+			var transaction = transactionList[i];
+			
+			if(transaction.runningBalance < 0) {
+				txnCount++;
+			}
+			if(txnCount==6) {
+				throw error;
+			}
+
+			_super.addTransaction(transaction);
+	}
+
+}
+
+	var savingsAccount = new SavingsAccount("SavingsAccount");
+
+	console.log(savingsAccount.name);
+
+savingsAccount.addTransaction({type:'DEBIT', amount:100});
+savingsAccount.addTransaction({type:'DEBIT', amount:100});
+savingsAccount.addTransaction({type:'DEBIT', amount:100});
+savingsAccount.addTransaction({type:'DEBIT', amount:100});
+savingsAccount.addTransaction({type:'DEBIT', amount:100});
+
+console.log(savingsAccount.getBalance());
+
+
+	</script>
+
+</body>
+</html>

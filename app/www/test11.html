@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<script type="text/javascript">
+	
+	function myAjax(url, successFn) {
+
+		console.log("in myAjax");
+
+		var myFunc = successFn;
+
+		var xhr = new XMLHttpRequest();
+		
+		xhr.onreadystatechange = function(url, successFn) {
+
+			console.log(xhr.readyState, xhr.status);
+			if(xhr.readyState === 4 && xhr.status === 200) {
+				console.log(xhr.responseText);
+
+				console.dir(url);
+				console.log(typeof myFunc);
+				myFunc();
+
+				//hello();
+				//window[hello]();
+			}
+
+		};
+
+
+		console.log("Before executing GET function");
+		xhr.open("GET", url);
+		xhr.send();
+
+	}	
+
+	var hello = function () {
+		console.log("hello executed");
+	}
+
+	myAjax("http://localhost:9292/test9.html", hello);
+
+</script>
+
+
+</head>
+<body>
+
+<div> First
+	<div style="float:right">
+		Second
+			<div> Third
+			</div>
+	</div>
+</div>
+
+</body>
+</html>

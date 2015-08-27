@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intuit Bootcamp</title>
+	<link rel="shortcut icon" href"data:image/x-icon;" type="image/x-icon">
+	<script src="libs/jquery/dist/jquery.js"></script>
+	<script src = "js/dojo/dojo-config.js"></script>
+	<script src = "libs/dojo/dojo.js"></script>
+
+
+</head>
+<body>
+	<div id="newsFlash">
+		News Flash: If you own stock; you are not quite broke.
+	</div>
+
+	<script type="text/javascript">
+
+	var domElement = document.getElementById("newsFlash");
+	console.log(domElement);
+
+	var domElementTags = document.getElementsByTagName("div");
+	console.log("Tags " + domElementTags);
+
+	var divElements = $("#newsFlash");
+	console.dir(divElements);
+
+	var divElementTagJ =$("div");
+	console.log("Jquery " + divElementTagJ[0]);
+
+	var domElementTagS = document.querySelector("div");
+
+
+
+	var domElements2  = document.querySelector("#newsFlash");
+	console.log(domElements2);
+
+	require(["dojo/dom", "dojo/dom-construct", "dojo/domReady!"], 
+		function(dom, domConstruct, query) {
+
+			var divElements3 = dom.byId("newsFlash");
+			console.dir(divElements3);
+
+			var domElement3 = domConstruct.create("div", {
+				innerhHTML : "Motel Hobbe"				
+			});
+
+			console.dir("New element " + domElement3);
+
+	});
+	</script>
+
+</body>
+</html>

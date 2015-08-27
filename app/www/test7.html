@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+	"use strict";
+
+	var o = {};
+
+	o.name "Eric Greene";
+
+	o.name = "Eric";
+	console.log(o.name);
+
+	Object.defineProperty(o, "firstName", { enumerable:true, configurable:true, value:"Eric", writable:true });
+
+	o.firstName = "Bob";
+
+
+
+</script>
+
+</body>
+</html>

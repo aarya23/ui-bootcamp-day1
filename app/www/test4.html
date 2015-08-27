@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+
+function Account(name) {
+	this.name = name;
+	this.balance = 0;this.transactionList = [];
+}
+
+Account.prototype.getBalance = function() {
+	return this.balance;
+};
+
+Account.prototype.getTransactionList = function() {
+	return this.transactionList;
+};
+
+Account.prototype.addTransaction = function(transaction) {
+	console.log("base function is being called");
+	this.transactionList.push(transaction);
+	console.log("Length " + this.transactionList.length);
+};
+
+// var a = new Account("MyAccount");
+
+// console.log(a.name);
+// console.log(a.getTransactionList());
+// console.log(a.getBalance());
+
+// a.addTransaction({
+// 	type: 'CREDIT',
+// 	amount: 100
+//});
+
+//console.log(a.transactionList[0]);
+
+
+function SavingsAccount(name) {
+	this.lowBalanceAttempts = 0;
+	SavingsAccount.prototype._super.call(this, name);
+
+}
+
+SavingsAccount.prototype = Object.create(Account.prototype);
+SavingsAccount.prototype.constructor = SavingsAccount;
+SavingsAccount.prototype._super = Account;
+
+
+
+
+SavingsAccount.prototype.addTransaction = function(transaction) {
+
+	var txnCount = 0;
+
+	console.log("transaction getting added with " + transaction.type + " "  + transaction.amount);
+	
+	if (transaction.type === 'CREDIT') {
+	//	SavingsAccount.prototype._super.prototype.addTransaction.call(this, transaction);
+		Account.prototype.addTransaction.call(this, transaction);
+
+		this.balance = this.balance + transaction.amount;
+	} else {
+
+		if(this.balance< 0 && this.lowBalanceAttempts>6) {
+			throw new Error("Insufficient Balance ... ");
+		}
+
+		this.balance = this.balance - transaction.amount;
+		
+		console.log("New balance " + this.balance);
+
+		if(this.balance< 0) {
+			this.lowBalanceAttempts++;
+		}
+
+
+
+		Account.prototype.addTransaction.call(this, transaction);
+//		SavingsAccount.prototype.addTransaction.call(this, firstName, lastName);
+
+
+//		SavingsAccount.prototype._super.prototype.addTransaction.call(this, transaction);
+//		SavingsAccount.prototype._super.addTransaction.call(this, transaction);
+	}
+};
+
+var savingsAccount = new SavingsAccount("savingsAccountcount");
+
+console.log(savingsAccount.name);
+
+savingsAccount.addTransaction({	type: 'CREDIT',	amount: 100});
+
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+savingsAccount.addTransaction({	type: 'DEBIT',	amount: 100});
+
+console.log("Amount --->" + savingsAccount.getBalance());</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intuit Bootcamp</title>
+	<link rel="shortcut icon" href"data:image/x-icon;" type="image/x-icon">
+	<script src="libs/jquery/dist/jquery.js"></script>
+	<script src = "js/dojo/dojo-config.js"></script>
+	<script src = "libs/dojo/dojo.js"></script>
+
+</head>
+
+<body>
+<table id="myTable"  border="1">
+  <tr id="headerRow">
+    <th>Make</th>
+    <th>Model</th>
+    <th>Year</th>
+    <th>Color</th>
+  </tr>
+</table> 
+
+	<script type="text/javascript">
+
+	var carList = [{make:"BMW", model:"X5", year:2015, color:"black"},
+					{make:"Acura", model:"RDX", year:2014, color:"white"},
+					{make:"Lexus", model:"RX350", year:2013, color:"blue"},
+					{make:"Audi", model:"Q7", year:2012, color:"red"}];
+
+
+
+	
+
+
+	for(var i=0; i<carList.length; i++) {
+
+
+
+		var car = carList[i];
+
+		var eBtn = $('<input type="button" value="Edit" id=EditBtn-' + i + ' >').click(function () {
+				console.dir($("#EditBtn-"+i).closest("tr"));
+				
+				$("#EditBtn-"+i).closest("tr");
+
+
+				alert("Edit button clicked");
+		});
+
+
+		var sBtn = $('<input type="button" value="Save" id=SaveBtn-' + i + '>').click(function () {
+				$("table").closest("tr").remove();
+				alert("Save button clicked");
+
+		});
+
+		var cBtn = $('<input type="button" value="Cancel" id=CancelBtn-' + i + '>').click(function () {
+				alert("Cancel button clicked");
+		});
+
+ 		var tr = $('<tr>').append(
+
+ 			$('<td id=td-' + i+ '>').text(car.make),
+
+            $('<td>').text(car.model),
+            $('<td>').text(car.year),
+            $('<td>').text(car.color),
+            $('<td>').append(eBtn),
+            $('<td>').append(sBtn),
+            $('<td>').append(cBtn)
+            );
+
+ 			$("#myTable").append(tr);
+
+
+ 		
+
+	}
+
+
+ 	
+
+	</script>
+
+</body>
+</html>

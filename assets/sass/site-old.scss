@@ -1,0 +1,41 @@
+@import "themes/default";
+@import "themes/color";
+
+@mixin myFirstMixin($fontWeight:bold, $fontFamily:arial, $fontSize:20px) {
+	font-weight:$fontWeight;
+	font-family:$fontFamily;
+	font-size:$fontSize;
+}
+
+span {
+	@include myFirstMixin($fontFamily:cursive);
+	font-family:italic;	
+}
+
+.bold {
+	font-weight:bold;
+}
+
+div {
+	@extend .bold;
+}
+
+body {
+	padding: $paddingWithMargin;
+	margin: 10px;
+	border: 1px;
+	background-color: $backgroundColor;
+}
+
+div {
+	font-weight: bold;
+}
+
+
+p {
+	background-color: $regularColor;
+}
+
+p:hover {
+	background-color: $hoverColor;
+}
